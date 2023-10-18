@@ -1,9 +1,10 @@
 import Layout from './components/Layout';
+import EventList from './components/EventList';
 
 const Home: React.FC = () => {
   return (
     <Layout>
-      {/* Content for the Home page */}
+      <EventList />
     </Layout>
   );
 };
