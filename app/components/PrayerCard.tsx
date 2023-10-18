@@ -14,7 +14,7 @@ interface PrayerCardProps {
 
 const PrayerCard: React.FC<PrayerCardProps> = ({ prayer }) => {
   const { name, date, profileImage, prayerRequest } = prayer;
-  const defaultProfileImage = 'https://example.com/default-profile-image.jpg'; // Replace with your default profile image URL
+  const defaultProfileImage = '/logo.jpg'; // Replace with your default profile image URL
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4 md:w-1/3 w-full">
