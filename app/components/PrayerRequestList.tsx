@@ -43,19 +43,16 @@ function PrayerList() {
     }
   }
 
-
-  const openForm = () => {
-    setFormOpen(true);
-  };
-
   const closeForm = () => {
     setFormOpen(false);
   };
 
-  // Add an event listener to open the form when the icon is clicked
   useEffect(() => {
-    const pencilIcon = document.querySelector('.pencil-icon');
+    const openForm = () => {
+      setFormOpen(true);
+    };
 
+    const pencilIcon = document.querySelector('.pencil-icon');
     if (pencilIcon) {
       pencilIcon.addEventListener('click', openForm);
     }
@@ -65,10 +62,7 @@ function PrayerList() {
         pencilIcon.removeEventListener('click', openForm);
       }
     };
-  }, [openForm]);
-
-
-
+  }, []); // Empty dependency array to indicate it should run once
 
   return (
     <div>
