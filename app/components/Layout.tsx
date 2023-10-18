@@ -1,8 +1,12 @@
-import { LayoutProps } from '@/.next/types/app/layout';
+import React from 'react';
 import Link from 'next/link';
 import { FaCalendar, FaPrayingHands, FaInfoCircle } from 'react-icons/fa'; // Example icons from react-icons
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+interface CustomLayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<CustomLayoutProps> = ({ children }) => {
   return (
     <div className="bg-white min-h-screen">
       {/* Mobile app-like bottom navigation bar */}
