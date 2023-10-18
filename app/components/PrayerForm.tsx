@@ -18,7 +18,11 @@ const customStyles = {
   },
 };
 
-const PrayerForm = () => {
+interface PrayerFormProps {
+    onClose: () => void; // Define the onClose prop
+  }
+
+const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [prayerRequest, setPrayerRequest] = useState('');
   const [name, setName] = useState('');
@@ -39,6 +43,7 @@ const PrayerForm = () => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    onClose(); // Call the onClose function when closing the modal
   };
 
   const handleSubmit = async () => {
