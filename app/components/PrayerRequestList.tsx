@@ -14,6 +14,7 @@ function PrayerList() {
     date: string;
     profileImage: string;
     prayerRequest: string;
+    created_at: string; // Assuming 'created_at' is the timestamp field
   }[]>([]);
 
   const [isFormOpen, setFormOpen] = useState(false);
@@ -31,13 +32,22 @@ function PrayerList() {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     try {
-      const { data, error } = await supabase.from('prayers').select('*');
-      if (error) {
-        throw error;
-      }
+      // Calculate the timestamp for 3 days ago
+      const threeDaysAgo = new Date();
+      threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
 
-      setPrayers(data);
-      setLoading(false);
+      const { data, error } = await supabase
+        .from('prayers')
+        .select('*')
+        .gte('created_at', threeDaysAgo.toISOString()) // Filter requests created within the last 3 days
+        .order('created_at', { ascending: false }); // Order by creation date
+
+        if (error) {
+          throw error;
+        }
+  
+        setPrayers(data);
+        setLoading(false);
     } catch (error) {
       console.error('Error fetching prayers:', error);
       setLoading(false);
