@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PrayerCard from './PrayerCard';
 import { createClient } from '@supabase/supabase-js';
 import { RiPencilFill } from 'react-icons/ri';
 import PrayerForm from './PrayerForm';
+import PrayerCardLoadingSkeleton from './PrayerCardLoadingSkeleton'; // Import the loading skeleton
 
 function PrayerList() {
   const [prayers, setPrayers] = useState<{
@@ -75,10 +76,15 @@ function PrayerList() {
         <RiPencilFill size="1.5rem" />
       </div>
 
-      {isLoading && <p>Loading...</p>}
-      {prayers.map((prayer) => (
-        <PrayerCard key={prayer.id} prayer={prayer} />
-      ))}
+      {isLoading ? (
+        <PrayerCardLoadingSkeleton /> // Render the loading skeleton while data is loading
+      ) : prayers.length === 0 ? (
+        <p>No prayers found</p>
+      ) : (
+        prayers.map((prayer) => (
+          <PrayerCard key={prayer.id} prayer={prayer} />
+        ))
+      )}
     </div>
   );
 }
