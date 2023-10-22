@@ -3,7 +3,7 @@ import React from 'react';
 
 const BannerImage: React.FC = () => {
   // Define the image URL from your public folder
-  const imageUrl = '/logo.jpg';
+  const imageUrl = '/logo.png';
 
   return (
     <div className="flex justify-center">
