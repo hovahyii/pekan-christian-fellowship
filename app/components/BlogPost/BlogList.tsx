@@ -39,7 +39,7 @@ const BlogList: React.FC = () => {
       };
       
     return (
-      <div>
+        <div className="blog-list-container h-[calc(100vh-100px)] overflow-y-auto">
         {isLoading &&  <BlogCardLoadingSkeleton />}
         {error && <p>Error: {error}</p>}
         {blogPosts.map((post) => (
