@@ -27,7 +27,7 @@ const RelatedLinks: React.FC = () => {
   ];
 
   return (
-    <div className="mt-8">
+    <div className="mt-10">
       <h2 className="text-2xl font-semibold mb-2">Related Links</h2>
       {links.map((link, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md p-4 mb-4">

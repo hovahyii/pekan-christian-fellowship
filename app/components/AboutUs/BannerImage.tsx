@@ -6,9 +6,11 @@ const BannerImage: React.FC = () => {
   const imageUrl = '/logo.png';
 
   return (
+    <>
     <div className="flex justify-center">
-      <img src={imageUrl} alt="Banner" className="" />
+      <img src={imageUrl} alt="Banner" className="md:w-1/4" />
     </div>
+    </>
   );
 };
 
