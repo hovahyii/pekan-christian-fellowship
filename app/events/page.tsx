@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import EventList from '../components/EventList'; // Import the EventCard component
+import EventList from '../components/Event/EventList'; // Import the EventCard component
 
 const Events: React.FC = () => {
   return (

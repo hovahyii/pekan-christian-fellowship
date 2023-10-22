@@ -14,7 +14,7 @@ interface EventCardProps {
   event: Event;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const { title, date, time, venue, description, imageUrl } = event;
   const defaultImageUrl = 'https://media.swncdn.com/cms/CW/faith/47910-church-fellowship-1200.1200w.tn.jpg'; // Replace with your default image URL
 
@@ -61,4 +61,18 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
   );
 };
 
-export default EventCard;
+interface UpcomingEventCardProps {
+  event: Event;
+}
+
+export const UpcomingEventCard: React.FC<UpcomingEventCardProps> = ({ event }) => {
+  return <EventCard event={event} />;
+};
+
+interface PastEventCardProps {
+  event: Event;
+}
+
+export const PastEventCard: React.FC<PastEventCardProps> = ({ event }) => {
+  return <EventCard event={event} />;
+};

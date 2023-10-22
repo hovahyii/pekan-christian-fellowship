@@ -1,5 +1,5 @@
 import Layout from './components/Layout';
-import EventList from './components/EventList';
+import EventList from './components/Event/EventList';
 
 const Home: React.FC = () => {
   return (

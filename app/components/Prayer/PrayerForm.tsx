@@ -58,6 +58,7 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
         prayerRequest,
         profileImage,
         date: new Date().toISOString(),
+        created_at: new Date().toISOString(), // Set 'created_at' to the current timestamp
       },
     ]);
 
