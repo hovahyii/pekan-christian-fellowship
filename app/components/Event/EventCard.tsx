@@ -35,7 +35,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
-      metaDescription.name = 'description';
+      metaDescription.setAttribute('name', 'description'); // Corrected here
       document.head.appendChild(metaDescription);
     }
     metaDescription.setAttribute('content', description || '');
@@ -43,7 +43,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     let metaImage = document.querySelector('meta[property="og:image"]');
     if (!metaImage) {
       metaImage = document.createElement('meta');
-      metaImage.setAttribute('property', 'og:image');
+      metaImage.setAttribute('property', 'og:image'); // Corrected here
       document.head.appendChild(metaImage);
     }
     metaImage.setAttribute('content', imageUrl || '');
