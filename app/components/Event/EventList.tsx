@@ -3,6 +3,7 @@ import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 import EventCardLoadingSkeleton from './EventCardLoadingSkeleton';
 import { UpcomingEventCard, PastEventCard } from './EventCard';
+import Image from 'next/image';
 
 function EventList() {
   const [events, setEvents] = React.useState([]);
@@ -48,51 +49,47 @@ function EventList() {
     return eventDate < currentDate;
   });
 
-
-
   return (
-    <div>
-         <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
+<div className="overflow-y-auto mb-20">
+      <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
 
       {upcomingEvents.length > 0 && (
         <div>
-              
           {upcomingEvents.map((event) => (
             <UpcomingEventCard key={event.id} event={event} />
           ))}
         </div>
       )}
       {upcomingEvents.length === 0 && <p>No events</p>}
-      
+
       {upcomingEvents.length > 0 && <div style={{ margin: '20px 0' }}></div>}
 
       {pastEvents.length > 0 && (
         <div>
-             <h2 className="font-bold text-2xl text-center mt-20">Past Events</h2>
+          <h2 className="font-bold text-2xl text-center mt-20">Past Events</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pastEvents.map((event) => (
-                <div key={event.id} className="bg-white border rounded shadow-md p-4">
-                  <img src={event.imageUrl} alt={event.title} className="w-full h-40 object-cover" />
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold">{event.title}</h3>
-                    <p className="text-sm text-gray-500">{event.date}</p>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {pastEvents.map((event) => (
+              <div key={event.id} className="bg-white border rounded shadow-md p-4">
+                <Image
+                  src={event.imageUrl}
+                  alt={event.title}
+                  width="1000"
+                  height="1000"
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold">{event.title}</h3>
+                  <p className="text-sm text-gray-500">{event.date}</p>
                 </div>
-              ))}
-            </div>
-
-    
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {pastEvents.length === 0 && <p>No past events</p>}
     </div>
   );
 }
-
-// Define a component to display the image of the past event
-const PastEventCardImage = ({ imageUrl }) => (
-  <img src={imageUrl} alt="Event" style={{ maxWidth: '200px', display: 'block', margin: '0 auto' }} />
-);
 
 export default EventList;
