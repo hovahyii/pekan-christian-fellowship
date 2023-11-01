@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Image from 'next/image';
 
 interface Event {
   id: number;
@@ -52,7 +53,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4 flex flex-col md:flex-row">
       <div className="md:w-1/3">
-        <img
+        <Image
+          width="1000"
+          height="1000" 
           src={imageUrl || defaultImageUrl}
           alt={title}
           className="mb-2 w-full md:h-full object-cover"

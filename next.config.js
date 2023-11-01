@@ -5,6 +5,12 @@ module.exports = {
         SUPABASE_KEY: process.env.SUPABASE_KEY,
 
     },
+    images: {
+        domains: [
+        'images.squarespace-cdn.com', 
+        'th.bing.com', 
+        'assets.traveltriangle.com'],
+      },
 
   }
 
