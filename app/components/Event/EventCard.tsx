@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface Event {
   id: number;
@@ -27,6 +27,27 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const period = isPM ? 'PM' : 'AM';
     return `${formattedHours}:${minutes} ${period}`;
   };
+
+  useEffect(() => {
+    // Update meta tags dynamically
+    document.title = title;
+
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', description || '');
+
+    let metaImage = document.querySelector('meta[property="og:image"]');
+    if (!metaImage) {
+      metaImage = document.createElement('meta');
+      metaImage.setAttribute('property', 'og:image');
+      document.head.appendChild(metaImage);
+    }
+    metaImage.setAttribute('content', imageUrl || '');
+  }, [title, description, imageUrl]);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4 flex flex-col md:flex-row">
