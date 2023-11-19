@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { createClient } from '@supabase/supabase-js';
 import { useDropzone } from 'react-dropzone';
-import { FiUpload } from 'react-icons/fi'; // Import an icon for the drop zone
+import { FiUpload } from 'react-icons/fi';
+import Image from 'next/image';
 
 const customStyles = {
   content: {
@@ -19,14 +20,18 @@ const customStyles = {
 };
 
 interface PrayerFormProps {
-    onClose: () => void; // Define the onClose prop
-  }
+  onClose: () => void;
+}
 
 const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [prayerRequest, setPrayerRequest] = useState('');
   const [name, setName] = useState('');
   const [profileImage, setProfileImage] = useState(null);
+
+  const SUPABASE_URL = process.env.SUPABASE_URL || '';
+  const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -43,14 +48,16 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
-    onClose(); // Call the onClose function when closing the modal
+    onClose();
   };
 
   const handleSubmit = async () => {
-    // Create a new prayer request in Supabase
-    const SUPABASE_URL = process.env.SUPABASE_URL || '';
-    const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
-    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    console.log('Submitting prayer request...');
+    console.log('Name:', name);
+    console.log('Prayer Request:', prayerRequest);
+    console.log('Profile Image:', profileImage);
+
 
     const { data, error } = await supabase.from('prayers').upsert([
       {
@@ -58,7 +65,6 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
         prayerRequest,
         profileImage,
         date: new Date().toISOString(),
-        created_at: new Date().toISOString(), // Set 'created_at' to the current timestamp
       },
     ]);
 
@@ -66,13 +72,14 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
       console.error('Error submitting prayer request:', error);
     }
 
+    // Clear form fields and close the modal
     setModalIsOpen(false);
     setPrayerRequest('');
     setName('');
     setProfileImage(null);
 
-     // Reload the page
-     window.location.reload();
+      // Reload the page
+      window.location.reload();
   };
 
   return (
@@ -98,7 +105,9 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
           <div {...getRootProps()} className="border border-dashed border-gray-400 p-4 rounded">
             <input {...getInputProps()} />
             {profileImage ? (
-              <img
+              <Image
+                width={20}
+                height={20}
                 src={profileImage}
                 alt="Profile Image"
                 className="w-20 h-20 rounded-full object-cover mb-2"

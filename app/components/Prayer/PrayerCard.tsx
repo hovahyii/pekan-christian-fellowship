@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface Prayer {
   id: number;
@@ -19,9 +20,11 @@ const PrayerCard: React.FC<PrayerCardProps> = ({ prayer }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4 md:w-1/3 w-full">
       <div className="flex items-center">
-        <img
+        <Image
           src={profileImage || defaultProfileImage}
           alt={name}
+          width={16}
+          height={16}
           className="w-16 h-16 rounded-full object-cover"
         />
         <div className="p-4 flex-grow">
