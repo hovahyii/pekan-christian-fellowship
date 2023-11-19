@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 interface Event {
   id: number;
