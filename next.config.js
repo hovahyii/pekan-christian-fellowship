@@ -9,6 +9,7 @@ module.exports = {
         domains: [
         'images.squarespace-cdn.com', 
         'th.bing.com', 
+        'media.timeout.com',
         'assets.traveltriangle.com'],
       },
 
