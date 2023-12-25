@@ -1,6 +1,6 @@
 // components/BannerImage.tsx
 import React from 'react';
-
+import Image from 'next/image';
 const BannerImage: React.FC = () => {
   // Define the image URL from your public folder
   const imageUrl = '/logo.png';
@@ -8,7 +8,7 @@ const BannerImage: React.FC = () => {
   return (
     <>
     <div className="flex justify-center">
-      <img src={imageUrl} alt="Banner" className="md:w-1/4" />
+      <Image width={1000} height={1000} src={imageUrl} alt="Banner" className="md:w-1/4" />
     </div>
     </>
   );
