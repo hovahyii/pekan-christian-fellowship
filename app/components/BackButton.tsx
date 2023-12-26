@@ -11,13 +11,14 @@ export const BackButton = () => {
     position: 'fixed',
     top: '20px',
     left: '20px',
+    textAlign: 'center',
     backgroundColor: '#007bff',
     color: 'white',
     borderRadius: '12%',
     padding: '10px',
     cursor: 'pointer',
     fontSize: '24px',
-    width: '80px',
+    width: '10vw',
     zIndex: 10,
   };
 
