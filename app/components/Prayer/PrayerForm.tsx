@@ -27,18 +27,20 @@ const PrayerForm: React.FC<PrayerFormProps> = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [prayerRequest, setPrayerRequest] = useState('');
   const [name, setName] = useState('');
-  const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   const SUPABASE_URL = process.env.SUPABASE_URL || '';
   const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const onDrop = (acceptedFiles) => {
+  const onDrop = (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setProfileImage(event.target.result);
+        if (event.target && typeof event.target.result === 'string') {
+          setProfileImage(event.target.result);
+        }
       };
       reader.readAsDataURL(file);
     }
