@@ -18,7 +18,6 @@ export const BackButton = () => {
     padding: '10px',
     cursor: 'pointer',
     fontSize: '24px',
-
     zIndex: 10,
   };
 
