@@ -8,12 +8,21 @@ dependencies:
   '@mdx-js/loader':
     specifier: ^3.0.0
     version: 3.0.0(webpack@5.89.0)
+  '@mdx-js/react':
+    specifier: ^3.0.0
+    version: 3.0.0(@types/react@18.2.45)(react@18.2.0)
   '@next/env':
     specifier: ^13.5.5
     version: 13.5.6
+  '@next/mdx':
+    specifier: ^14.0.4
+    version: 14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
   '@supabase/supabase-js':
     specifier: ^2.38.1
     version: 2.39.1(utf-8-validate@6.0.3)
+  '@types/mdx':
+    specifier: ^2.0.10
+    version: 2.0.10
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -485,6 +494,17 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@mdx-js/react@3.0.0(@types/react@18.2.45)(react@18.2.0):
+    resolution: {integrity: sha512-nDctevR9KyYFyV+m+/+S4cpzCWHqj+iHDHq3QrsWezcC+B17uZdIWgCguESUkwFhM3n/56KxWVE3V6EokrmONQ==}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
+    dependencies:
+      '@types/mdx': 2.0.10
+      '@types/react': 18.2.45
+      react: 18.2.0
+    dev: false
+
   /@next/env@13.5.5:
     resolution: {integrity: sha512-agvIhYWp+ilbScg81s/sLueZo8CNEYLjNOqhISxheLmD/AQI4/VxV7bV76i/KzxH4iHy/va0YS9z0AOwGnw4Fg==}
     dev: false
@@ -498,6 +518,22 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/mdx@14.0.4(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0):
+    resolution: {integrity: sha512-w0b+A2LRdlqqTIzmaeqPOaafid2cYYYjETA+G+3ZFwkNbBQjvZp57P1waOexF3MGHzcCEoXEnhYpAc+FO6S0Rg==}
+    peerDependencies:
+      '@mdx-js/loader': '>=0.15.0'
+      '@mdx-js/react': '>=0.15.0'
+    peerDependenciesMeta:
+      '@mdx-js/loader':
+        optional: true
+      '@mdx-js/react':
+        optional: true
+    dependencies:
+      '@mdx-js/loader': 3.0.0(webpack@5.89.0)
+      '@mdx-js/react': 3.0.0(@types/react@18.2.45)(react@18.2.0)
+      source-map: 0.7.4
+    dev: false
 
   /@next/swc-darwin-arm64@13.5.5:
     resolution: {integrity: sha512-FvTdcJdTA7H1FGY8dKPPbf/O0oDC041/znHZwXA7liiGUhgw5hOQ+9z8tWvuz0M5a/SDjY/IRPBAb5FIFogYww==}

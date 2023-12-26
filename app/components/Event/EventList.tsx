@@ -5,8 +5,20 @@ import EventCardLoadingSkeleton from './EventCardLoadingSkeleton';
 import { UpcomingEventCard, PastEventCard } from './EventCard';
 import Image from 'next/image';
 
+interface Event {
+  id: number;
+  // Add other properties based on your actual data structure
+  title: string;
+  date: string;
+  time: string;
+  imageUrl: string;
+  venue: string;
+  description: string;
+}
+
+
 function EventList() {
-  const [events, setEvents] = React.useState([]);
+  const [events, setEvents] = React.useState<Event[]>([]);
   const [isLoading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -25,7 +37,8 @@ function EventList() {
         throw error;
       }
 
-      setEvents(data);
+      // Set the events with the correct type
+      setEvents(data as Event[]);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -68,11 +81,11 @@ function EventList() {
       {upcomingEvents.length > 0 && <div style={{ margin: '20px 0' }}></div>}
 
       {pastEvents.length > 0 && (
-        <div>
+        <div className="overflow-y-auto">
              <h2 className="font-bold text-2xl text-center mt-20">Past Events</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pastEvents.map((event) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4  ">
+              {pastEvents.reverse().map((event) => (
                 <div key={event.id} className="bg-white border rounded shadow-md p-4">
                   <Image src={event.imageUrl} alt={event.title} width="1000" height="1000" className="w-full h-40 object-cover" />
                   <div className="p-4">
