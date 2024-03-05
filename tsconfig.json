@@ -37,7 +37,7 @@
     "app/blogs/page.js",
     "app/api/posts.js",
     "app/blogs/[slug].js"
-  ],
+, "mdx-components.jsx"  ],
   "exclude": [
     "node_modules"
   ]

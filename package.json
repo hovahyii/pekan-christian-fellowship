@@ -33,10 +33,12 @@
     "react-icons": "^4.11.0",
     "react-modal": "^3.16.1",
     "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^4.0.0",
     "utf-8-validate": "^6.0.3",
     "ws": "^8.15.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.10.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",

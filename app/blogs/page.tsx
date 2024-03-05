@@ -1,76 +1,64 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import Link from 'next/link';
-import { FaUser, FaCalendar } from 'react-icons/fa';
+import { getPostsData } from "@/lib/blog_functions";
+import Link from "next/link";
+import React from "react";
 import Layout from '../components/Layout';
-import Image from 'next/image';
+import Image from "next/image";
 
-interface FrontMatter {
-  title: string;
-  author: string;
-  date: string; // You might want to use a specific date type
-  image: string;
-  excerpt: string;
-}
+export default async function Blogs() {
+  const blogs = await getPostsData();
 
-interface Post {
-  frontMatter: FrontMatter;
-  slug: string;
-}
+  // Sort blogs by date in ascending order
+  blogs.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-export default async function Blog() {
-  const posts = await getPosts();
-  posts.sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime());
+  // Case: no posts
+  if (blogs.length === 0) {
+    return (
+      <div className="container mx-auto p-4">There are no posts yet...</div>
+    );
+  }
 
+  // Display all posts
   return (
-    <Layout >
-      <div className="overflow-y-auto">
-        {posts.map((post, index) => (
-          <div className="bg-white rounded-lg shadow-md p-4 mb-4" key={index}>
-            <Link href={`${post.slug}`} passHref>
-              <div className="flex flex-col md:flex-row w-full">
-                <Image
-                  width={300}
-                  height={300}
-                  src={post.frontMatter.image}
-                  alt={post.frontMatter.title}
-                  className="object-cover "
-                />
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">{post.frontMatter.title}</h2>
-                  <div className="mb-2 flex items-center">
-                    <FaUser size={16} className="mr-2" />
-                    <p className="mr-10">{post.frontMatter.author}</p>
-                    <FaCalendar size={16} className="mr-2" />
-                    <p>{new Date(post.frontMatter.date).toLocaleDateString()}</p>
-                  </div>
-                  <div className="mt-2">
-                    <p>{post.frontMatter.excerpt}</p>
-                  </div>
-                </div>
+    <Layout>
+      <div className="container mx-auto p-4 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+          {blogs.reverse().map((blog) => (
+            <div
+              key={blog.slug}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
+              {/* Blog Image */}
+              <Image
+                width={400}
+                height={100}
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-48 object-cover"
+              />
+
+              <div className="p-4">
+                {/* Blog Title */}
+                <h2 className="text-lg font-semibold mb-2">
+                  <Link prefetch={false} href={`/blogs/${blog.slug}`}>
+                    {blog.title}
+                  </Link>
+                </h2>
+
+                {/* Blog Author */}
+                <p className="text-sm text-gray-500 mb-2">By {blog.author}</p>
+
+                {/* Blog Description */}
+                <p className="text-sm text-gray-600">{blog.excerpt}</p>
+
+                {/* Blog Date */}
+                <p className="mt-2 text-xs text-gray-400">
+                  {blog.date.toLocaleDateString()}
+                </p>
               </div>
-            </Link>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );
-}
-
-
-async function getPosts(): Promise<Post[]> {
-  const files = fs.readdirSync(path.join('posts'));
-
-  const posts = files.map((filename) => {
-    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8');
-    const { data: frontMatter } = matter(markdownWithMeta);
-
-    return {
-      frontMatter: frontMatter as FrontMatter,
-      slug: filename.split('.')[0],
-    };
-  });
-
-  return posts; // Return the array of posts
 }

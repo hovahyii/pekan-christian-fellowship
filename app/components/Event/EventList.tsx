@@ -65,7 +65,7 @@ function EventList() {
 
 
   return (
-    <div>
+    <div className='mb-20'>
          <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
 
       {upcomingEvents.length > 0 && (
