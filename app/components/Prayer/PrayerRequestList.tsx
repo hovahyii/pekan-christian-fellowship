@@ -86,7 +86,7 @@ function PrayerList() {
       <div
         className="fixed bottom-24 right-4 w-12 h-12 bg-red-500 text-white flex items-center justify-center rounded-full cursor-pointer pencil-icon"
       >
-       <RiPencilFill />
+       <RiPencilFill size={30} />
       </div>
 
       {isLoading ? (
