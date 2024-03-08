@@ -1,8 +1,9 @@
 import { getPostsData } from "@/lib/blog_functions";
-import Link from "next/link";
 import React from "react";
 import Layout from '../components/Layout';
 import Image from "next/image";
+import { RiPencilFill } from 'react-icons/ri';
+import Link from "next/link";
 
 export default async function Blogs() {
   const blogs = await getPostsData();
@@ -59,6 +60,12 @@ export default async function Blogs() {
           ))}
         </div>
       </div>
+
+      <Link href="https://forms.gle/RFXZAKFUokt21ZpX7"
+        className="fixed bottom-24 z-10 right-4 w-auto h-12 bg-red-500 text-white flex items-center p-4 justify-center rounded-md cursor-pointer pencil-icon"
+      >
+        <RiPencilFill size="1.5rem" /> Submit Your Blog 
+      </Link>
     </Layout>
   );
 }
