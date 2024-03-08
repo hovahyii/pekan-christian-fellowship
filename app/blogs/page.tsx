@@ -5,6 +5,15 @@ import Image from "next/image";
 import { RiPencilFill } from 'react-icons/ri';
 import Link from "next/link";
 
+// Function to format date as day-month-year
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // Month is zero-based
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 export default async function Blogs() {
   const blogs = await getPostsData();
 
@@ -53,7 +62,7 @@ export default async function Blogs() {
 
                 {/* Blog Date */}
                 <p className="mt-2 text-xs text-gray-400">
-                  {blog.date.toLocaleDateString()}
+                  {formatDate(blog.date)}
                 </p>
               </div>
             </div>
