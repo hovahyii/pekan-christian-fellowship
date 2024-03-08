@@ -6,7 +6,6 @@ const nextConfig = {
 	// Configure `pageExtensions`` to include MDX files
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 	// Optionally, add any other Next.js config below
-	output: "export", // Will export all routes as static html
     env: {
         SUPABASE_URL: process.env.SUPABASE_URL,
         SUPABASE_KEY: process.env.SUPABASE_KEY,
