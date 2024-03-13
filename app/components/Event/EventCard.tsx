@@ -78,7 +78,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
             <p>
               <strong>Description:</strong>
             </p>
-            <p>{description}</p>
+            <p dangerouslySetInnerHTML={{ __html: description }}></p>
           </div>
         )}
       </div>
