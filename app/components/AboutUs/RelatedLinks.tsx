@@ -5,7 +5,7 @@ const RelatedLinks: React.FC = () => {
   // Define your related links and descriptions here
   const links = [
     {
-      title: 'WhatsApp Group for Pekan Christian Fellowship',
+      title: 'WhatsApp Group for Pekan Christian Community',
       url: 'https://chat.whatsapp.com/Ilu5VjArWOmBoV07dxDBVW',
       description: 'Join our WhatsApp group for updates and discussions.',
       button: 'Join Us'
