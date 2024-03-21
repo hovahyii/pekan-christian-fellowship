@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FaCalendar, FaPrayingHands, FaInfoCircle, FaBlog } from 'react-icons/fa';
+import { GiMusicalNotes } from "react-icons/gi";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,6 +39,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             Events
           </span>
         </Link>
+        <Link href="/praise-and-worship"
+          className={`text-white flex flex-col items-center ${
+            activePage === '/prayers' ? 'active' : ''
+          }`}
+        >
+          <GiMusicalNotes
+            size={24}
+            color={activePage === '/praise-and-worship' ? '#ffcc00' : 'white'} // Change icon color
+          />
+          <span
+            style={{
+              color: activePage === '/praise-and-worship' ? '#ffcc00' : 'white', // Change text color
+            }}
+          >
+            Songs
+          </span>
+        </Link>
+
         <Link href="/prayers"
           className={`text-white flex flex-col items-center ${
             activePage === '/prayers' ? 'active' : ''

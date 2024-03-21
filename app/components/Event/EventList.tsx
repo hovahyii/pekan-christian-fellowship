@@ -4,10 +4,10 @@ import { createClient } from '@supabase/supabase-js';
 import EventCardLoadingSkeleton from './EventCardLoadingSkeleton';
 import { UpcomingEventCard, PastEventCard } from './EventCard';
 import Image from 'next/image';
+import Head from 'next/head';
 
 interface Event {
   id: number;
-  // Add other properties based on your actual data structure
   title: string;
   date: string;
   time: string;
@@ -82,14 +82,17 @@ upcomingEvents.forEach((upcomingEvent) => {
     pastEvents.splice(index, 1);
   }
 });
+ // Sort upcoming events by date
+ 
+   return (
+   
 
-  return (
     <div className="mb-20">
       <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
 
       {upcomingEvents.length > 0 && (
         <div>
-          {upcomingEvents.map((event) => (
+          {upcomingEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()).map((event) => (
             <UpcomingEventCard key={event.id} event={event} />
           ))}
         </div>
@@ -126,6 +129,7 @@ upcomingEvents.forEach((upcomingEvent) => {
       )}
       {pastEvents.length === 0 && <p>No past events</p>}
     </div>
+  
   );
 }
 

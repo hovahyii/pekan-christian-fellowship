@@ -16,7 +16,8 @@ const nextConfig = {
         'th.bing.com', 
         'media.timeout.com',
         'assets.traveltriangle.com',
-        'images.unsplash.com'],
+        'images.unsplash.com',
+        'media.swncdn.com'],
       },
       reactStrictMode: true,
   // Optionally, add any other Next.js config below
