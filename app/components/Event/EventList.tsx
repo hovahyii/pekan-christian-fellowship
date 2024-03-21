@@ -4,8 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import EventCardLoadingSkeleton from './EventCardLoadingSkeleton';
 import { UpcomingEventCard, PastEventCard } from './EventCard';
 import Image from 'next/image';
-import Head from 'next/head';
-
+import Layout from '../Layout';
 interface Event {
   id: number;
   title: string;
@@ -86,7 +85,7 @@ upcomingEvents.forEach((upcomingEvent) => {
  
    return (
    
-
+    <Layout>
     <div className="mb-20">
       <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
 
@@ -129,7 +128,7 @@ upcomingEvents.forEach((upcomingEvent) => {
       )}
       {pastEvents.length === 0 && <p>No past events</p>}
     </div>
-  
+    </Layout>
   );
 }
 
