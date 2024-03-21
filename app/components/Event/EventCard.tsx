@@ -16,6 +16,7 @@ interface EventCardProps {
   event: Event;
 }
 
+
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const { title, date, time, venue, description, imageUrl } = event;
   const defaultImageUrl = 'https://media.swncdn.com/cms/CW/faith/47910-church-fellowship-1200.1200w.tn.jpg'; // Replace with your default image URL
@@ -30,29 +31,15 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     return `${formattedHours}:${minutes} ${period}`;
   };
 
-  useEffect(() => {
-    // Update meta tags dynamically
-    document.title = title;
-
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description'); // Corrected here
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', description || '');
-
-    let metaImage = document.querySelector('meta[property="og:image"]');
-    if (!metaImage) {
-      metaImage = document.createElement('meta');
-      metaImage.setAttribute('property', 'og:image'); // Corrected here
-      document.head.appendChild(metaImage);
-    }
-    metaImage.setAttribute('content', imageUrl || '');
-  }, [title, description, imageUrl]);
-
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4 flex flex-col md:flex-row">
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="image" content={imageUrl || defaultImageUrl}  />
+        <meta name="og:description" content={description} />
+        <meta property="og:image" content={imageUrl || defaultImageUrl} />
+      </Head>
       <div className="md:w-1/3">
         <Image
           width="1000"
