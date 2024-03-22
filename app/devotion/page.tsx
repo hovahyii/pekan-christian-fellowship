@@ -2,6 +2,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
 
@@ -58,21 +59,27 @@ export default function Devotion(){
 		<Layout>
         {devotions && devotions.map((devotion) => (
 				<>
-		
+					<Head>
+						<title>{devotion.title}</title>
+						<meta charSet="UTF-8" />
+						<meta name="description" content={devotion.excerpt} />
+						<meta name="keywords" content={devotion.excerpt} />
+						<meta name="author" content={devotion.author_name} />
+						<link rel="icon" href="/favicon.ico" />
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+					</Head>
 					<div className="flex h-full overflow-hidden mb-8">
 						<div className="m-auto">
 							<main className="mb-12">
-                            <Image
+                                <Image
 										src={devotion.shareable_image}
 										alt={devotion.title}
 										layout="fill"
 										objectFit="cover"
 										priority={true}
-                                        className="p-4 absolute bottom-2 left-0"
-									/>	
-								<div className=" w-full max-w-screen-md mx-auto relative h-screen">			
-                              				
-									<div className="p-4 absolute bottom-8 left-0 ">
+									/>
+								<div className="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative h-screen">								
+									<div className="p-4 absolute bottom-2 left-0 ">
 										<h2 className="text-4xl  text-white leading-tight font-extrabold">
 											{devotion.title}
 										</h2>
@@ -100,7 +107,6 @@ export default function Devotion(){
 											</p>
 										</div>
 									</div>
-                               
 								</div>
 								<div className="px-4 lg:px-0 mt-6 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
 									<p className="text-lg font-semibold text-gray-600 leading-tight md:text-2xl pb-8">
@@ -124,7 +130,7 @@ export default function Devotion(){
 											href={devotion.passage_url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className=" text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
+											className="text-sm md:text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
 										>
 											{devotion.passage_reference}
 										</a>
@@ -169,4 +175,3 @@ export default function Devotion(){
 		</Layout>
 	)
 }
-
