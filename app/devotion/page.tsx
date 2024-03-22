@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import type { Metadata, ResolvingMetadata } from 'next'
 
 async function getData() {
     let today = new Date();
@@ -15,22 +14,17 @@ async function getData() {
       return res.json()
     }
 
-    
-    export async function generateMetadata( parent: ResolvingMetadata): Promise<Metadata> {
-        let today = new Date();
-        const devotion  = await fetch('https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=' + today,{ next: { revalidate: 3600 } }).then((res) => res.json())
-       
-        const previousImages = (await parent).openGraph?.images || []
+    export async function generateMetadata({ res }){
 
        
         return {
-          title: devotion.title,
-          description: devotion.excerpt,
-          authors: [devotion.author],
+          title: res.title,
+          description: res.excerpt,
+          authors: [res.author],
           openGraph: {
-            title: devotion.title,
-            description: devotion.excerpt,
-            images: [devotion.shareable_image, ...previousImages],
+            title: res.title,
+            description: res.excerpt,
+            images: [res.shareable_image],
           },
         }
       }    
