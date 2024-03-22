@@ -57,10 +57,38 @@ export default function Devotion(){
 	return (
 		<Layout>
         {devotions && devotions.map((devotion) => (
-				<>
-			
-					<div className="flex h-full overflow-hidden mb-8">
-						<div className="m-auto">
+			   <div key={devotion.title} className="flex h-full overflow-hidden mb-8">
+               <div className="m-auto">
+                   <div className="mb-4 w-full max-w-screen-md mx-auto">
+                       <div className="p-4 mb-4">
+                           <h2 className="text-4xl text-white leading-tight font-extrabold">
+                               {devotion.title}
+                           </h2>
+                           <div className="flex mt-3">
+                               <Image
+                                   src={
+                                       "https://d626yq9e83zk1.cloudfront.net/authors/" +
+                                       devotion.author_link
+                                           .replace("https://odb.org/author/", "")
+                                           .split("/")[0] +
+                                       ".jpg"
+                                   }
+                                   alt={devotion.author_name}
+                                   width={40}  // Adjust the size here
+                                   height={40}  // Make sure width and height are the same
+                                   className="rounded object-cover"
+                               />
+                               <p className="font-semibold text-black text-xl ml-4">
+                                   <a href={devotion.author_link} target="_blank" rel="noopener noreferrer">
+                                       {devotion.author_name}
+                                   </a>
+                               </p>
+                               <p className="font-semibold text-black text-sm ml-4">
+                                   {new Date().toDateString()}
+                               </p>
+                           </div>
+                       </div>
+                   </div>
 							<main className="mb-12">
                                 <Image
 										src={devotion.shareable_image}
@@ -71,7 +99,7 @@ export default function Devotion(){
 									/>
 								<div className="mb-4 w-full max-w-screen-md mx-auto relative h-screen">								
 									<div className="p-4 absolute bottom-2 left-0 ">
-										<h2 className="text-4xl  text-white leading-tight font-extrabold">
+										<h2 className="text-4xl  text-black leading-tight font-extrabold">
 											{devotion.title}
 										</h2>
 										<div className="flex mt-3">
@@ -161,7 +189,7 @@ export default function Devotion(){
 							</main>
 						</div>
 					</div>
-				</>
+				 
 			))}
 		</Layout>
 	)
