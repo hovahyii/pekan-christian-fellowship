@@ -42,6 +42,11 @@ const nextConfig = {
                 hostname:  'media.swncdn.com',
     
               },
+              {
+                protocol: 'https',
+                hostname:  'd626yq9e83zk1.cloudfront.net',
+    
+              },
           ],
       },
       reactStrictMode: true,

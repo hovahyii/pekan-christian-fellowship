@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FaCalendar, FaPrayingHands, FaInfoCircle, FaBlog } from 'react-icons/fa';
 import { GiMusicalNotes } from "react-icons/gi";
+import { GiSlicedBread } from "react-icons/gi";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -57,21 +58,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </span>
         </Link>
 
-        <Link href="/prayers"
+        <Link href="/devotion"
           className={`text-white flex flex-col items-center ${
-            activePage === '/prayers' ? 'active' : ''
+            activePage === '/devotion' ? 'active' : ''
           }`}
         >
-          <FaPrayingHands
+          <GiSlicedBread 
             size={24}
-            color={activePage === '/prayers' ? '#ffcc00' : 'white'} // Change icon color
+            color={activePage === '/devotion' ? '#ffcc00' : 'white'} // Change icon color
           />
           <span
             style={{
-              color: activePage === '/prayers' ? '#ffcc00' : 'white', // Change text color
+              color: activePage === '/devotion' ? '#ffcc00' : 'white', // Change text color
             }}
           >
-            Prayers
+            Devotion
           </span>
         </Link>
         <Link href="/blogs"
