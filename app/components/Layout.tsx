@@ -2,15 +2,27 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaCalendar, FaPrayingHands, FaInfoCircle, FaBlog } from 'react-icons/fa';
+import { FaCalendar, FaInfoCircle, FaBlog } from 'react-icons/fa';
 import { GiMusicalNotes } from "react-icons/gi";
 import { GiSlicedBread } from "react-icons/gi";
+
+
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+export const metadata = {
+  title: {
+    template: '%s | Pekan Christian Community',
+  },
+  openGraph: {
+    title: {
+      template: '%s | Pekan Christian Community',
+    },
+  },
 
+}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [activePage, setActivePage] = useState<string>(''); // Initialize the activePage state

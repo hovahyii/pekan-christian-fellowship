@@ -2,10 +2,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
-
 interface devotion {
     title: string;
     excerpt: string;
@@ -59,21 +57,7 @@ export default function Devotion(){
 		<Layout>
         {devotions && devotions.map((devotion) => (
 				<>
-					<Head>
-						<title>{devotion.title}</title>
-						<meta charSet="UTF-8" />
-						<meta name="description" content={devotion.excerpt} />
-                        <meta name="keywords" content={devotion.excerpt} />
-                        <meta name="image" content={devotion.shareable_image} />
-						<meta name="author" content={devotion.author_name} />
-                        <meta name="og:description" content={devotion.excerpt} />
-						<meta name="og:keywords" content={devotion.excerpt} />
-						<meta name="og:author" content={devotion.author_name} />
-                        <meta name="og:image" content={devotion.shareable_image} />
-						<meta name="og:keywords" content={devotion.excerpt} />
-						<link rel="icon" href="/favicon.ico" />
-						<meta name="viewport" content="width=device-width, initial-scale=1" />
-					</Head>
+		
 					<div className="flex h-full overflow-hidden mb-8">
 						<div className="m-auto">
 							<main className="mb-12">
@@ -136,7 +120,7 @@ export default function Devotion(){
 											href={devotion.passage_url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-sm md:text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
+											className=" text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
 										>
 											{devotion.passage_reference}
 										</a>

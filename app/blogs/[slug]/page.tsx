@@ -28,6 +28,9 @@ export async function generateMetadata({
 		return {
 			title: metadata.title,
 			description: metadata.excerpt,
+			openGraph: {
+				images: metadata.image
+			},
 		};
 	}
 	return {}; //Default return.
