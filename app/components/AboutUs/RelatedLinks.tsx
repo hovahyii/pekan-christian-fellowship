@@ -12,10 +12,10 @@ const RelatedLinks: React.FC = () => {
 
     },
     {
-      title: 'Pekan Methodist Chapel Instagram',
-      url: 'https://www.instagram.com/pekan_methodist_chapel/',
-      description: 'Follow us on Instagram for visual updates and events.',
-      button: 'Follow Us'
+      title: 'Pekan Methodist Chapel (Chinese)',
+      url: 'https://pekan-methodist-chapel.vercel.app/',
+      description: 'Check out the mandarin service time on the official website',
+      button: 'Join Us'
 
     },
     {
