@@ -149,7 +149,7 @@ export default function Devotion(){
 											href={devotion.passage_url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-sm md:text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
+											className=" text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
 										>
 											{devotion.passage_reference}
 										</a>
@@ -159,7 +159,7 @@ export default function Devotion(){
 											Insight
 										</h2>
 										<div
-											className="font-semibold rounded whitespace-pre-line text-pretty text-justify	"
+											className="font-semibold   whitespace-pre-line text-justify	"
 											dangerouslySetInnerHTML={{ __html: devotion.insights }}
 										/>
 									</div>
