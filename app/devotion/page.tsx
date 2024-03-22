@@ -63,8 +63,14 @@ export default function Devotion(){
 						<title>{devotion.title}</title>
 						<meta charSet="UTF-8" />
 						<meta name="description" content={devotion.excerpt} />
-						<meta name="keywords" content={devotion.excerpt} />
+                        <meta name="keywords" content={devotion.excerpt} />
+                        <meta name="image" content={devotion.shareable_image} />
 						<meta name="author" content={devotion.author_name} />
+                        <meta name="og:description" content={devotion.excerpt} />
+						<meta name="og:keywords" content={devotion.excerpt} />
+						<meta name="og:author" content={devotion.author_name} />
+                        <meta name="og:image" content={devotion.shareable_image} />
+						<meta name="og:keywords" content={devotion.excerpt} />
 						<link rel="icon" href="/favicon.ico" />
 						<meta name="viewport" content="width=device-width, initial-scale=1" />
 					</Head>
