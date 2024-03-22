@@ -7,10 +7,7 @@ export const metadata: Metadata = {
   title: 'Events | Pekan Christian Community',
   description: "Explore upcoming events at Pekan Christian Community. Join us for worship services, Bible studies, community outreach, and fellowship gatherings. Everyone is welcome!",
     openGraph: {
-      title: {
-        absolute: 'Events',
-        default: 'Pekan Christian Community', // a default is required when creating a template
-      },
+      title: 'Events | Pekan Christian Community',
       description: "Explore upcoming events at Pekan Christian Community. Join us for worship services, Bible studies, community outreach, and fellowship gatherings. Everyone is welcome!",
       images: ['https://media.swncdn.com/cms/CW/faith/47910-church-fellowship-1200.1200w.tn.jpg'],
     },

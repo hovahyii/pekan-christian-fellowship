@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Explore upcoming events at Pekan Christian Community. Join us for worship services, Bible studies, community outreach, and fellowship gatherings. Everyone is welcome!",
   openGraph: {
       title: {
-        absolute: 'About',
+        absolute: 'About | Pekan Christian Community',
         default: 'Pekan Christian Community', // a default is required when creating a template
       },
       description:

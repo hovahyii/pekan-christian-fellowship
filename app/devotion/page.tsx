@@ -5,17 +5,15 @@ import type { Metadata } from 'next'
 
 async function getData() {
     let today = new Date();
-        let formattedDate = today.toLocaleDateString('en-US', {
-          day: '2-digit', 
-          month: '2-digit', 
-          year: 'numeric'
-        });
+
+    const formattedDate = today.toLocaleDateString('en-US', {
+        month: '2-digit', 
+        day: '2-digit', 
+        year: 'numeric'
+    });
+
         console.log(formattedDate);  // Outputs date in MM-DD-YYYY format
-            const res  = await 
-    fetch(
-        `https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${formattedDate}`,
-        { next: { revalidate: 3600 } }
-      )
+            const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${formattedDate}`,{ next: { revalidate: 3600 } })
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
