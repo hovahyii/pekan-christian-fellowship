@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import type { Metadata } from 'next'
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 async function getData() {
-    const today = new Date();
-     const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${today}`,{ next: { revalidate: 3600 } })
+    const today = zonedTimeToUtc(new Date(), 'Asia/Kuala_Lumpur');
+        const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${today}`,{ next: { revalidate: 3600 } })
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
