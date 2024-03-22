@@ -11,13 +11,38 @@ const nextConfig = {
         SUPABASE_KEY: process.env.SUPABASE_KEY,
     },
     images: {
-        domains: [
-        'images.squarespace-cdn.com', 
-        'th.bing.com', 
-        'media.timeout.com',
-        'assets.traveltriangle.com',
-        'images.unsplash.com',
-        'media.swncdn.com'],
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'images.squarespace-cdn.com',
+             
+            },
+            {
+                protocol: 'https',
+                hostname: 'th.bing.com',
+          
+              },
+              {
+                protocol: 'https',
+                hostname: 'media.timeout.com',
+                
+              },
+              {
+                protocol: 'https',
+                hostname:   'assets.traveltriangle.com',
+               
+              },
+              {
+                protocol: 'https',
+                hostname:  'images.unsplash.com',
+              
+              },
+              {
+                protocol: 'https',
+                hostname:  'media.swncdn.com',
+    
+              },
+          ],
       },
       reactStrictMode: true,
   // Optionally, add any other Next.js config below

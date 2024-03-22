@@ -9,7 +9,7 @@ interface Event {
   time: string;
   venue: string;
   description?: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 interface EventCardProps {
@@ -41,13 +41,14 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <meta property="og:image" content={imageUrl || defaultImageUrl} />
       </Head>
       <div className="md:w-1/3">
+      <div className="mb-2 w-full md:h-full object-cover">
         <Image
-          width="1000"
-          height="1000" 
+          width={1000}
+          height={1000} 
           src={imageUrl || defaultImageUrl}
           alt={title}
-          className="mb-2 w-full md:h-full object-cover"
         />
+      </div>
       </div>
       <div className="md:w-2/3 p-4">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>

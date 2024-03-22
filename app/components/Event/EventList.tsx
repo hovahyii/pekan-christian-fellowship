@@ -2,9 +2,9 @@
 import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 import EventCardLoadingSkeleton from './EventCardLoadingSkeleton';
-import { UpcomingEventCard, PastEventCard } from './EventCard';
+import { UpcomingEventCard } from './EventCard';
 import Image from 'next/image';
-import Layout from '../Layout';
+
 interface Event {
   id: number;
   title: string;
@@ -19,6 +19,7 @@ interface Event {
 function EventList() {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [isLoading, setLoading] = React.useState(true);
+  const defaultImageUrl = 'https://media.swncdn.com/cms/CW/faith/47910-church-fellowship-1200.1200w.tn.jpg'; // Replace with your default image URL
 
   React.useEffect(() => {
     fetchEventsFromSupabase();
@@ -85,7 +86,6 @@ upcomingEvents.forEach((upcomingEvent) => {
  
    return (
    
-    <Layout>
     <div className="mb-20">
       <h2 className="font-bold text-2xl text-center">Upcoming Events</h2>
 
@@ -111,7 +111,7 @@ upcomingEvents.forEach((upcomingEvent) => {
                 className="bg-white border rounded shadow-md p-4"
               >
                 <Image
-                  src={event.imageUrl}
+                  src={event.imageUrl  || defaultImageUrl}
                   alt={event.title}
                   width="1000"
                   height="1000"
@@ -128,7 +128,6 @@ upcomingEvents.forEach((upcomingEvent) => {
       )}
       {pastEvents.length === 0 && <p>No past events</p>}
     </div>
-    </Layout>
   );
 }
 
