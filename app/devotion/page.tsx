@@ -5,8 +5,18 @@ import type { Metadata } from 'next'
 
 async function getData() {
     let today = new Date();
-    const res  = await fetch('https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=' + today,{ next: { revalidate: 3600 } });
-   
+        let formattedDate = today.toLocaleDateString('en-US', {
+          day: '2-digit', 
+          month: '2-digit', 
+          year: 'numeric'
+        });
+        console.log(formattedDate);  // Outputs date in MM-DD-YYYY format
+            const res  = await 
+    fetch(
+        `https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${formattedDate}`,
+        { next: { revalidate: 3600 } }
+      )
+
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data')
@@ -22,7 +32,7 @@ async function getData() {
             title: "Devotion | Pekan Christian Community",
             description: "Read the devotional of the day from Pekan Christian Community",
         },
-}
+    }
 
 
 
