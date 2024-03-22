@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
+import { Metadata } from 'next'
 
 async function getData() {
     let today = new Date();
@@ -14,24 +15,28 @@ async function getData() {
       return res.json()
     }
 
-    export async function generateMetadata({ res }){
+export async function generateMetadata(): Promise<Metadata> {
+    const devotions = await getData()
+    if (devotions) {
+      return {
+        title: devotions.title,
+        description: devotions.excerpt,
+        authors: [devotions.author],
+        openGraph: {
+          title: devotions.title,
+          description: devotions.excerpt,
+          images: [devotions.shareable_image],
+        },
+      };
+    }
+    return {}; //Default return.
+  }
 
-       
-        return {
-          title: res.title,
-          description: res.excerpt,
-          authors: [res.author],
-          openGraph: {
-            title: res.title,
-            description: res.excerpt,
-            images: [res.shareable_image],
-          },
-        }
-      }    
+
 
 export default async function Devotion(){
     const devotions = await getData()
-  
+
     return (
         <Layout>
             {devotions && devotions.map((devotion) => (
