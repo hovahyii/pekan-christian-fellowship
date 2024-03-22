@@ -1,16 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
+import type { Metadata, ResolvingMetadata } from 'next'
 
 async function getData() {
     let today = new Date();
-    let formattedDate = today.toLocaleDateString('en-US', {
-        month: '2-digit', 
-        day: '2-digit', 
-        year: 'numeric'
-    });
-    console.log(formattedDate);
-    const res  = await fetch('https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=' + formattedDate,{ next: { revalidate: 3600 } });
+    const res  = await fetch('https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=' + today,{ next: { revalidate: 3600 } });
    
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
@@ -20,7 +15,25 @@ async function getData() {
       return res.json()
     }
 
+    
+    export async function generateMetadata( parent: ResolvingMetadata): Promise<Metadata> {
+        let today = new Date();
+        const devotion  = await fetch('https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=' + today,{ next: { revalidate: 3600 } }).then((res) => res.json())
+       
+        const previousImages = (await parent).openGraph?.images || []
 
+       
+        return {
+          title: devotion.title,
+          description: devotion.excerpt,
+          authors: [devotion.author],
+          openGraph: {
+            title: devotion.title,
+            description: devotion.excerpt,
+            images: [devotion.shareable_image, ...previousImages],
+          },
+        }
+      }    
 
 export default async function Devotion(){
     const devotions = await getData()
