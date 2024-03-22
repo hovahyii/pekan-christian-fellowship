@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 
 async function getData() {
     const today = new Date();
-     const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${formattedDate}`,{ next: { revalidate: 3600 } })
+     const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${today}`,{ next: { revalidate: 3600 } })
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
