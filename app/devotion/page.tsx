@@ -62,15 +62,17 @@ export default function Devotion(){
 					<div className="flex h-full overflow-hidden mb-8">
 						<div className="m-auto">
 							<main className="mb-12">
-                                <Image
+                            <Image
 										src={devotion.shareable_image}
 										alt={devotion.title}
 										layout="fill"
 										objectFit="cover"
 										priority={true}
-									/>
-								<div className=" w-full max-w-screen-md mx-auto relative h-screen">								
-									<div className="p-4 absolute bottom-2 left-0 z-10">
+                                        className="p-4 absolute bottom-2 left-0"
+									/>	
+								<div className=" w-full max-w-screen-md mx-auto relative h-screen">			
+                              				
+									<div className="p-4 absolute bottom-8 left-0 ">
 										<h2 className="text-4xl  text-white leading-tight font-extrabold">
 											{devotion.title}
 										</h2>
@@ -98,6 +100,7 @@ export default function Devotion(){
 											</p>
 										</div>
 									</div>
+                               
 								</div>
 								<div className="px-4 lg:px-0 mt-6 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
 									<p className="text-lg font-semibold text-gray-600 leading-tight md:text-2xl pb-8">

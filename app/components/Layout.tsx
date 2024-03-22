@@ -36,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="bg-white min-h-screen">
       {/* Mobile app-like bottom navigation bar */}
-      <div className="fixed bottom-0 w-full bg-[#142a59] p-4 flex justify-evenly">
+      <div className="fixed bottom-0 w-full bg-[#142a59] p-4 flex justify-evenly  z-10">
         <Link href="/events"
           className={`text-white flex flex-col items-center ${
             activePage === '/events' ? 'active' : ''
