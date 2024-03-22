@@ -15,9 +15,8 @@ async function getData() {
       return res.json()
     }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata() {
     const devotions = await getData()
-    if (devotions) {
       return {
         title: devotions.title,
         description: devotions.excerpt,
@@ -29,8 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       };
     }
-    return {}; //Default return.
-  }
 
 
 
