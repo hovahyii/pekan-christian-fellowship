@@ -4,6 +4,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
+  metadataBase: new URL('https://pekan-christian-community.vercel.app/'),
   applicationName: 'Pekan Chrisitian Community',
   referrer: 'origin-when-cross-origin',
   keywords: ['PCC', 'Pekan Chrisitian Community', 'Pekan Christian', 'Christian in Pekan'],
