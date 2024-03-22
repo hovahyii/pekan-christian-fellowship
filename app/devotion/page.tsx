@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 async function getData() {
     let today = new Date();
@@ -15,9 +15,10 @@ async function getData() {
       return res.json()
     }
 
-export async function generateMetadata() {
-    const devotions = await getData()
-      return {
+    export async function generateMetadata(): Promise<Metadata> {
+
+        const devotions = await getData()
+        return {
         title: devotions.title,
         description: devotions.excerpt,
         authors: [devotions.author],
