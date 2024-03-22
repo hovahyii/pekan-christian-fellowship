@@ -1,10 +1,10 @@
 import Layout from './components/Layout';
-import EventList from './components/Event/EventList';
+import Devotion from './devotion/page';
 
 const Home: React.FC = () => {
   return (
     <Layout>
-      <EventList />
+      <Devotion />
     </Layout>
   );
 };

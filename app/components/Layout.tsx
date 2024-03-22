@@ -12,17 +12,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const metadata = {
-  title: {
-    template: '%s | Pekan Christian Community',
-  },
-  openGraph: {
-    title: {
-      template: '%s | Pekan Christian Community',
-    },
-  },
 
-}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [activePage, setActivePage] = useState<string>(''); // Initialize the activePage state

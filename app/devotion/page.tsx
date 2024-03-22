@@ -37,7 +37,7 @@ export default function Devotion(){
         console.log(formattedDate);  // Outputs date in MM-DD-YYYY format
 
       fetch(
-        `https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${today}`,
+        `https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${formattedDate}`,
         { next: { revalidate: 3600 } }
       )
         .then((res) => {
@@ -57,49 +57,19 @@ export default function Devotion(){
 	return (
 		<Layout>
         {devotions && devotions.map((devotion) => (
-			   <div key={devotion.title} className="flex h-full overflow-hidden mb-8">
-               <div className="m-auto">
-                   <div className="mb-4 w-full max-w-screen-md mx-auto">
-                       <div className="p-4 mb-4">
-                           <h2 className="text-4xl text-white leading-tight font-extrabold">
-                               {devotion.title}
-                           </h2>
-                           <div className="flex mt-3">
-                               <Image
-                                   src={
-                                       "https://d626yq9e83zk1.cloudfront.net/authors/" +
-                                       devotion.author_link
-                                           .replace("https://odb.org/author/", "")
-                                           .split("/")[0] +
-                                       ".jpg"
-                                   }
-                                   alt={devotion.author_name}
-                                   width={40}  // Adjust the size here
-                                   height={40}  // Make sure width and height are the same
-                                   className="rounded object-cover"
-                               />
-                               <p className="font-semibold text-black text-xl ml-4">
-                                   <a href={devotion.author_link} target="_blank" rel="noopener noreferrer">
-                                       {devotion.author_name}
-                                   </a>
-                               </p>
-                               <p className="font-semibold text-black text-sm ml-4">
-                                   {new Date().toDateString()}
-                               </p>
-                           </div>
-                       </div>
-                   </div>
-							<main className="mb-12">
+			   <div key={devotion.title} className="flex h-full overflow-hidden mb-24">
+               <div className="m-auto  my-0">
                                 <Image
 										src={devotion.shareable_image}
 										alt={devotion.title}
-										layout="fill"
-										objectFit="cover"
-										priority={true}
+                                        width={1000}
+                                        height={1000}
+                                        priority={true}
+                                        className="object-fit"
 									/>
-								<div className="mb-4 w-full max-w-screen-md mx-auto relative h-screen">								
+								<div className="h-48 w-full max-w-screen-md mx-auto relative">								
 									<div className="p-4 absolute bottom-2 left-0 ">
-										<h2 className="text-4xl  text-black leading-tight font-extrabold">
+										<h2 className="text-4xl  text-black leading-tight font-extrabold text-justify">
 											{devotion.title}
 										</h2>
 										<div className="flex mt-3">
@@ -128,30 +98,30 @@ export default function Devotion(){
 									</div>
 								</div>
 								<div className="px-4 lg:px-0 mt-6 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-									<p className="text-lg font-semibold text-gray-600 leading-tight md:text-2xl pb-8">
+									<p className="text-lg font-semibold text-gray-600 text-justify leading-tight md:text-2xl pb-8">
 										Bible in a Year:{" "}
 										<a
 											href={devotion.bible_in_a_year_url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="underline md:text-2xl text-kg"
+											className="underline md:text-2xl text-justify"
 										>
 											{devotion.bible_in_a_year_references}
 										</a>
 									</p>
 									<div
-										className="text-lg text-center pl-4 mb-8 italic font-semibold rounded md:text-2xl"
+										className="text-lg text-justify pl-4 mb-8 italic font-semibold rounded md:text-2xl"
 										dangerouslySetInnerHTML={{ __html: devotion.verse }}
 									/>
-									<p className="text-lg font-semibold text-gray-600 md:text-2xl pb-4">
+									<p className="text-lg font-semibold text-center md:text-left text-gray-600 md:text-2xl pb-4">
 										Today's Scripture: &nbsp;
 										<a
 											href={devotion.passage_url}
 											target="_blank"
 											rel="noopener noreferrer"
-											className=" text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
+											className="whitespace-nowrap md:whitespace-normal text-lg rounded-full border pt-2 pb-2 pl-4 pr-4 bg-blue-700 text-white md:text-2xl"
 										>
-											{devotion.passage_reference}
+								            {devotion.passage_reference}
 										</a>
 									</p>
 									<div className="border-4 border-double border-indigo-600 font-semibold p-4 mb-6">
@@ -186,7 +156,6 @@ export default function Devotion(){
     </p>
 </div>
 								</div>
-							</main>
 						</div>
 					</div>
 				 
