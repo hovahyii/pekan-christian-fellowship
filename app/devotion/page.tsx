@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
+
 interface devotion {
     title: string;
     excerpt: string;
@@ -68,7 +69,7 @@ export default function Devotion(){
 										objectFit="cover"
 										priority={true}
 									/>
-								<div className="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative h-screen">								
+								<div className=" w-full max-w-screen-md mx-auto relative h-screen">								
 									<div className="p-4 absolute bottom-2 left-0 z-10">
 										<h2 className="text-4xl  text-white leading-tight font-extrabold">
 											{devotion.title}
