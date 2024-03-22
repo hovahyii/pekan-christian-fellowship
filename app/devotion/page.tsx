@@ -2,7 +2,6 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
 
@@ -59,15 +58,7 @@ export default function Devotion(){
 		<Layout>
         {devotions && devotions.map((devotion) => (
 				<>
-					<Head>
-						<title>{devotion.title}</title>
-						<meta charSet="UTF-8" />
-						<meta name="description" content={devotion.excerpt} />
-						<meta name="keywords" content={devotion.excerpt} />
-						<meta name="author" content={devotion.author_name} />
-						<link rel="icon" href="/favicon.ico" />
-						<meta name="viewport" content="width=device-width, initial-scale=1" />
-					</Head>
+			
 					<div className="flex h-full overflow-hidden mb-8">
 						<div className="m-auto">
 							<main className="mb-12">
@@ -78,7 +69,7 @@ export default function Devotion(){
 										objectFit="cover"
 										priority={true}
 									/>
-								<div className="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative h-screen">								
+								<div className="mb-4 w-full max-w-screen-md mx-auto relative h-screen">								
 									<div className="p-4 absolute bottom-2 left-0 ">
 										<h2 className="text-4xl  text-white leading-tight font-extrabold">
 											{devotion.title}
@@ -97,12 +88,12 @@ export default function Devotion(){
                                         height={40}  // Make sure width and height are the same
                                         className="rounded object-cover	"
                         />
-											<p className="font-semibold text-white text-xl absolute left-16 ">
+											<p className="font-semibold text-black text-xl absolute left-16 ">
 												<a href={devotion.author_link} target="_blank" rel="noopener noreferrer">
 													{devotion.author_name}
 												</a>
 											</p>
-											<p className="font-semibold text-white text-sm absolute bottom-4 left-16">
+											<p className="font-semibold text-black text-sm absolute bottom-4 left-16">
 												{new Date().toDateString()}
 											</p>
 										</div>
