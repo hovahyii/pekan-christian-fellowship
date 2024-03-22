@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import type { Metadata } from 'next'
+const today = new Date();
 
 async function getData() {
-    const today = new Date();
-    today.setHours(today.getHours() + 12); // Adjusting the date to Malaysia timezone (GMT+8)
+    today.setDate(today.getDate() + 1); // Increase the date by 1 day
 
      const res  = await fetch(`https://api.experience.odb.org/devotionals/v2?site_id=1&status=publish&country=MY&on=${today}`,{ next: { revalidate: 3600 } })
 
@@ -70,7 +70,7 @@ export default async function Devotion(){
                                         </Link>
                                     </p>
                                     <p className="font-semibold text-black text-sm absolute bottom-4 left-16">
-                                        {new Date().toDateString()}
+                                    {new Date(today.setDate(today.getDate() + 1)).toDateString()}
                                     </p>
                                 </div>
                             </div>
