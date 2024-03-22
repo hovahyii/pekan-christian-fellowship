@@ -15,20 +15,15 @@ async function getData() {
       return res.json()
     }
 
-    export async function generateMetadata(): Promise<Metadata> {
-
-        const devotions = await getData()
-        return {
-        title: devotions.title,
-        description: devotions.excerpt,
-        authors: [devotions.author],
+    export const metadata: Metadata = {
+        title: "Devotion | Pekan Christian Community",
+        description: "Read the devotional of the day from Pekan Christian Community",
         openGraph: {
-          title: devotions.title,
-          description: devotions.excerpt,
-          images: [devotions.shareable_image],
+            title: "Devotion | Pekan Christian Community",
+            description: "Read the devotional of the day from Pekan Christian Community",
         },
-      };
-    }
+}
+
 
 
 
