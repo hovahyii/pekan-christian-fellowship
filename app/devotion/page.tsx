@@ -119,7 +119,7 @@ export default async function Devotion(){
                                     Reflect & Pray 
                                 </h2>
                                     <div
-                                        className="text-black text-center font-semibold	"
+                                        className="text-black text-center font-semibold	 whitespace-pre-line "
                                         dangerouslySetInnerHTML={{ __html: devotion.response }}
                                     />
                        
