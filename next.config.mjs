@@ -1,6 +1,8 @@
 import remarkGfm from "remark-gfm";
 import createMDX from "@next/mdx";
- 
+ // Set timezone
+process.env.TZ = 'Asia/Kuala_Lumpur';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	// Configure `pageExtensions`` to include MDX files
