@@ -24,9 +24,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen ">
       {/* Mobile app-like bottom navigation bar */}
-      <div className="fixed bottom-0 w-full bg-[#142a59] p-4 flex justify-evenly  z-10">
+      <div className="bottom-0 w-full bg-[#142a59] p-4 flex justify-evenly  z-10 fixed">
         <Link href="/events"
           className={`text-white flex flex-col items-center ${
             activePage === '/events' ? 'active' : ''
@@ -116,7 +116,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Content */}
-      <main className="container mx-auto p-4">{children}</main>
+      <main className="container  p-4">{children}</main>
     </div>
   );
 };
