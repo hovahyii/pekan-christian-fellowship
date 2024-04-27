@@ -35,7 +35,7 @@ export default async function Devotion(){
         <Layout>
             {devotions && devotions.map((devotion) => (
                 <main key={devotion.title} className="flex h-full overflow-hidden mb-24">
-                    <div className="m-auto  my-0">
+                <div className="m-auto  my-0">
                         <Image
                             src={devotion.shareable_image}
                             alt={devotion.title}
@@ -51,21 +51,20 @@ export default async function Devotion(){
                                 </h2>
                                 <div className="flex mt-3">
                                     <Image
-                                        src={
-                                            "https://d626yq9e83zk1.cloudfront.net/authors/" +
-                                            devotion.author_link
-                                                .replace("https://odb.org/author/", "")
-                                                .split("/")[0] +
-                                            ".jpg"
+                                         src={
+                                            devotion.author_link && devotion.author_link.includes("https://odb.org/author/")
+                                            ? "https://d626yq9e83zk1.cloudfront.net/authors/" +
+                                              devotion.author_link.replace("https://odb.org/author/", "").split("/")[0] + ".jpg"
+                                            : "/default-author.jpg"  // Path to a default image if author_link is not valid
                                         }
                                         alt={devotion.author_name}
                                         width={40}  // Adjust the size here
                                         height={40}  // Make sure width and height are the same
                                         className="rounded object-cover	"
                                     />
-                                    <p className="font-semibold text-black text-xl absolute left-16 ">
-                                        <Link href={devotion.author_link} target="_blank" rel="noopener noreferrer">
-                                            {devotion.author_name}
+                                   <p className="font-semibold text-black text-xl absolute left-16">
+                                        <Link href={devotion.author_link || "#"} target="_blank" rel="noopener noreferrer">
+                                            {devotion.author_name || "Author Unknown"}
                                         </Link>
                                     </p>
                                     <p className="font-semibold text-black text-sm absolute bottom-4 left-16">
